@@ -1,0 +1,18 @@
+2022-09-22 15:01:31.610  INFO 23600 --- [main] .S.SpringWebThymeleafJpaApplicationTests : Starting SpringWebThymeleafJpaApplicationTests using Java 17.0.2 on DESKTOP-1DU6PJ3 with PID 23600 (started by lt0208 in D:\Spring Project\SpringWebThymeleaf_tutorial_good\SpringWeb_Thymeleaf_JPA_Lomobok_MySQL_Devtool\SpringWebThymeleafJPA)
+2022-09-22 15:01:31.614  INFO 23600 --- [main] .S.SpringWebThymeleafJpaApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2022-09-22 15:01:32.227  INFO 23600 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-22 15:01:32.274  INFO 23600 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 2 JPA repository interfaces.
+2022-09-22 15:01:32.729  INFO 23600 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-22 15:01:32.780  INFO 23600 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.10.Final
+2022-09-22 15:01:32.932  INFO 23600 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-22 15:01:33.089  INFO 23600 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-09-22 15:01:33.436  INFO 23600 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-09-22 15:01:33.447  INFO 23600 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-09-22 15:01:34.052  INFO 23600 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-22 15:01:34.058  INFO 23600 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-22 15:01:34.810  WARN 23600 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-09-22 15:01:35.082  INFO 23600 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-09-22 15:01:35.502  INFO 23600 --- [main] .S.SpringWebThymeleafJpaApplicationTests : Started SpringWebThymeleafJpaApplicationTests in 4.148 seconds (JVM running for 4.875)
+2022-09-22 15:01:35.826  INFO 23600 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-22 15:01:35.828  INFO 23600 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-09-22 15:01:35.840  INFO 23600 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

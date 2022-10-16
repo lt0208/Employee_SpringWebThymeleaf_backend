@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:replace="header :: myheader"></div>
+
+    <title>Employee Management System</title>
+
+</head>
+<body>
+
+<div th:replace="navigation :: mynav"></div>
+
+
+<div align="center" class="container my-2">
+
+    <h1> Employee List </h1>
+    <a th:href="@{/showNewEmployeeForm}" class="btn btn-primary btn-sm mb-3"> Add Employee</a>
+    <a th:href="@{/showNewEmployeeForm2}" class="btn btn-primary btn-sm mb-3"> Add Employee2</a>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th> First Name</th>
+            <th> Last Name</th>
+            <th> Email</th>
+            <th> Supervised by</th>
+            <th> Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="employee1 : ${listEmployees}">
+            <!--why is employee1? it represents one element, any name is ok here! -->
+
+            <td th:text="${employee1.firstName}"></td>
+            <td th:text="${employee1.lastName}"></td>
+            <td th:text="${employee1.email}"></td>
+
+            <!-- <td th:text="${employee1?.manager?.firstName}"> </td> it works, see alternative as below-->
+            <!--<td th:text="${employee1.manager!=null}?${employee1.manager.firstName}:'not specified'"> </td>  it works, below is String concatenation-->
+            <td th:text="${employee1.manager!=null}?${employee1.manager.firstName} + ' ' + ${employee1.manager.lastName}:'not specified'"></td>
+
+            <td><a th:href="@{/showFormForUpdate/{id}(id=${employee1.id})}" class="btn btn-primary">Update</a>
+               <!-- <a th:href="@{/delete/{id}(id=${employee1.id})}" class="btn btn-danger">Delete</a>
+                <button th:onclick="|myFun('${employee1.id}')|" type="button" class="btn btn-primary">Delete2</button> -->
+                <!-- Attempted to use Button trigger modal, almost works, but it always deletes the first row-->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" th:attr="data-bs-target='#modalDelete'+${employee1.id}">
+                    Delete???
+                </button>
+
+                <div class="modal fade" th:id="modalDelete+${employee1.id}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h1 th:text="'Are you sure to delete ' + ${employee1.firstName} + ' '+ ${employee1.lastName} + '?'" > </h1>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button th:onclick="|window.location.href='@{/delete/{id}(id=${employee1.id})}'|"
+                                        type="button" class="btn btn-primary">Delete1
+                                </button>
+
+                                <button th:onclick="|myFun('${employee1.id}')|" type="button" class="btn btn-primary">
+                                    Delete2
+                                </button>
+                                <a th:href="@{/delete/{id}(id=${employee1.id})}" class="btn btn-danger">Delete3</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <script th:inline="javascript">
+                    function myFun(id){
+                        if (confirm("Are you sure to delete this employee?")){
+                              location.href = `/delete/${id}`;
+                        }
+                    };
+
+            </script>
+            <!-- Modal -->
+
+        </tr>
+
+        <div th:insert="footer :: myfooter"></div>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

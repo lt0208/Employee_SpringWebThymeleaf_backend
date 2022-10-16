@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:replace="header :: myheader"> </div>
+
+    <title>Update Manager</title>
+</head>
+<body>
+<div th:replace="navigation :: mynav"> </div>
+<div class="container my-2">
+
+    <form th:action="@{/manager/save-update}" th:object="${managerToUpd}" method="post">
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="form-group">
+            <label for="FirstName">First Name</label>
+            <input type="text" th:field="*{firstName}" class="form-control" id="FirstName">
+        </div>
+        <div class="form-group">
+            <label for="LastName">Last Name</label>
+            <input type="text" th:field="*{lastName}" class="form-control" id="LastName">
+        </div>
+        <div class="form-group">
+            <label for="manager_level">The manager's level</label>
+            <select class="form-control" th:field="*{level}" id="manager_level">
+                <option th:value="1" th:text="1"></option>
+                <option th:value="2" th:text="2"></option>
+                <option th:value="3" th:text="3"></option>
+                <option th:value="4">4</option>
+                <option th:value="5">5</option>
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" th:field="*{email}" class="form-control" id="exampleInputEmail1"
+                   aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<div th:insert="footer :: myfooter"> </div>
+
+</body>
+</html>

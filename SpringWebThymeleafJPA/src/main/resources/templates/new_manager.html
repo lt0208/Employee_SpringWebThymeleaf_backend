@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:replace="header :: myheader"> </div>
+
+    <title>Add new manager</title>
+    <style>
+        .error{
+          color:red;
+        }
+    </style>
+
+
+</head>
+<body>
+<div th:replace="navigation :: mynav"> </div>
+
+<div class="container my-2">
+    <form th:action="@{/manager/save-new}" th:object="${newManager}" method="post">
+        <div class="form-group">
+            <label for="FirstName">First Name</label>
+            <input type="text" th:field="*{firstName}" class="form-control" id="FirstName"
+                   placeholder="Input first name here, 2-25 characters, can't be empty!">
+            <p th:if="${#fields.hasErrors('firstName')}" th:errorclass="error" th:errors="*{firstName}"> </p>
+
+        </div>
+        <div class="form-group">
+            <label for="LastName">Last Name</label>
+            <input type="text" th:field="*{lastName}" class="form-control" id="LastName"
+                   placeholder="Input first name here">
+        </div>
+        <div class="form-group">
+            <label for="manager_level">The manager's level</label>
+            <select class="form-control" th:field="*{level}" id="manager_level">
+                <option th:value="1" th:text="1"></option>
+                <option th:value="2" th:text="2"></option>
+                <option th:value="3" th:text="3"></option>
+                <option th:value="4" >4</option>
+                <option th:value="5" >5</option>
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" th:field="*{email}" class="form-control" id="exampleInputEmail1" placeholder="Input email here, can't be empty!"
+                   aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <p th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}"> </p>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<div th:insert="footer :: myfooter"> </div>
+
+</body>
+</html>

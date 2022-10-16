@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:replace="header :: myheader"> </div>
+
+    <title>Employee Management System</title>
+
+</head>
+<body>
+<div th:replace="navigation :: mynav"> </div>
+
+<div class="container my-2">
+    <h1>Employee Management System</h1>
+    <hr>
+    <h2> Update Employee</h2>
+    <form action="#" th:action="@{/saveEmployee}" th:object="${employee}" method="post">
+        <!-- Add hidden form field to handle update
+             if skipping this field, it will create a new object rather than updating the current obj-->
+        <div class="form-group">
+            <input type="hidden" th:field="*{id}">
+        </div>
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text"  th:field="*{firstName}" id="firstName" class="form-control mb-4">
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text"  th:field="*{lastName}" id="lastName" class="form-control mb-4">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text"  th:field="*{email}" id="email" class="form-control mb-4">
+        </div>
+        <div class="form-group">
+            <label for="managerId">Manager Id</label>
+            <input type="text"  th:field="*{manager.id}" id="managerId" class="form-control mb-4">
+        </div>
+
+        <button type="submit" class="btn btn-info col-2" onclick="return confirm_update();"> Update Employee </button>
+        <!-- this is using js popup box confirm() to let user confirm their updating-->
+        <script th:inline = "javascript">
+            function confirm_update(){
+              if (confirm("Update this employee?")){
+                return true;
+              } else {
+                return false;
+              }
+            }
+        </script>
+    </form>
+    <br>
+    <a href = "/" class="btn btn-info col-2" >Homepage </a>
+
+</div>
+<div th:insert="footer :: myfooter"> </div>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SpringWebThymeleafJPA/SpringWebThymeleafJPA.iml" filepath="$PROJECT_DIR$/SpringWebThymeleafJPA/SpringWebThymeleafJPA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SpringWeb_Thymeleaf_JPA_Lomobok_MySQL_Devtool.iml" filepath="$PROJECT_DIR$/.idea/SpringWeb_Thymeleaf_JPA_Lomobok_MySQL_Devtool.iml" />
+    </modules>
+  </component>
+</project>

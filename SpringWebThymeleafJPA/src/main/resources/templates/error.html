@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:replace="header :: myheader"></div>
+    <title>Employee Management System</title>
+</head>
+
+<body>
+<div th:replace="navigation :: mynav"></div>
+<div align="center" class="container my-2">
+    <br>
+    <div class="alert alert-primary" role="alert">
+
+        <h2 th:if="${integrityException}" th:text="${integrityException} + '&#10; You have to handle the employees supervised by this manager first!'">Error </h2>
+
+        <br>
+        <div align="center" class="container my-2">
+            <!--Both below links work!! coz we don't need to pass anything through the link -->
+            <a th:href="@{/}" class="btn btn-primary">Return to homepage</a>
+            <a href="/manager/all" class="btn btn-primary">Return to manager page </a>
+        </div>
+    </div>
+
+</div>
+<div th:insert="footer :: myfooter"></div>
+</body>
+</html>

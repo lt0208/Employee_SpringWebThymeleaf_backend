@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:replace="header :: myheader"> </div>
+
+    <title>Employee Management System</title>
+    <style>
+        .error{
+           color:red;
+        }
+    </style>
+
+</head>
+<body>
+<div th:replace="navigation :: mynav"></div>
+
+<div class="container my-2">
+    <h1>Employee Management System</h1>
+    <hr>
+    <h2> Save Employee</h2>
+    <form action="#" id="newEmpForm" th:action="@{/saveEmployee}" th:object="${employee}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+        <input type="text" th:field="*{firstName}" placeholder="Input FirstName here,2-25 characters,can't be empty!" class="form-control mb-4" >
+              <p th:if="${#fields.hasErrors('firstName')}" th:errorclass="error" th:errors="*{firstName}"> </p>
+        </div>
+
+        <div class="form-group">
+        <input type="text" th:field="*{lastName}" placeholder="Input LastName" class="form-control mb-4">
+        </div>
+
+       <div class="form-group">
+           <input type="email" th:field="*{email}" placeholder="Input Email here, can't be empty!" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+           <p th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}"> </p>
+       </div>
+        <div class="form-group">
+        <input type="text" placeholder="Input manager id" th:field="*{manager.id}" class="form-control mb-4">
+        <!--Note above: if manager.id is long, th:field has default value 0 and won't show placeholder, fix it by set manager id as Long  -->
+        </div>
+
+            <button type="submit" class="btn btn-info col-2"> Save Employee</button>
+        <input type="submit" class="btn btn-info col-2" value="Save Employee2">
+        <button type="button" id="button3" class="btn btn-info col-2"> Save Employee3</button>
+    </form>
+
+</div>
+<script th:inline="javascript">
+            let elementForm = document.getElementById("newEmpForm");
+            let button3 = document.getElementById("button3");
+            button3.addEventListener("click",function(){elementForm.submit()});
+
+</script>
+<div th:insert="footer :: myfooter"> </div>
+
+</body>
+</html>

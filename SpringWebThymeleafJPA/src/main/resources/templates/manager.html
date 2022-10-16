@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:replace="header :: myheader"> </div>
+
+    <title>Manager List</title>
+</head>
+<body>
+<div th:replace="navigation :: mynav"> </div>
+
+<div align="center" class="container my-2">
+    <p class="h1">Manager List</p>
+    <a class="btn btn-primary btn-sm mb-3" th:href="@{/manager/newform}"> Add an manager</a>
+
+    <table class="table table-dark table-hover">
+        <thead>
+        <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Level</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody th:each="manager:${managerList}">
+        <tr>
+            <td th:text="${manager.firstName}"></td>
+            <td th:text="${manager.lastName}">see me?</td>
+            <td th:text="${manager.email}">cant see me</td>
+            <td th:text="${manager.level}">this is level</td>
+            <td>
+
+                <a class="btn btn-primary" th:href="@{/manager/update-form/{id}(id=${manager.id})}">Update</a>
+
+               <!-- delete manager can cause integrity issue-->
+                <button class="btn btn-primary"
+                        th:onclick="|location.href='@{/manager/delete/{id}(id=${manager.id})}'|">Delete
+                </button>
+
+            </td>
+
+        </tr>
+
+
+        </tbody>
+    </table>
+</div>
+<div th:insert="footer :: myfooter"> </div>
+
+</body>
+</html>
